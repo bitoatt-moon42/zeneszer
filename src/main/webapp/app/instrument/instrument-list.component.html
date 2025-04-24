@@ -1,0 +1,56 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1">{{ getGridTitle() }}</h1>
+    @if (isUserLoggedIn()) {
+        <div>
+            <a [routerLink]="getEditUrl()" class="btn btn-outline-dark ms-2">{{getCreateButtonTitle()}}</a>
+        </div>
+    }
+</div>
+
+@if (!instruments || instruments.length === 0) {
+    <div>No Instruments could be found.</div>
+} @else {
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Brand</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                @if (isUserLoggedIn()) {
+                <th >
+                    <div class="float-end text-nowrap">
+                        Actions
+                    </div>
+                </th>
+                }
+            </tr>
+            </thead>
+            <tbody>
+                @for (instrument of instruments; track instrument.id) {
+                    <tr>
+                        <td>{{ instrument.brand }}</td>
+                        <td>{{ instrument.name }}</td>
+                        <td>{{ instrument.price }} $</td>
+                        <td>
+                            <img class="img" src="{{ instrument.imageUrl }}" alt="Image 2" class="img-fluid"
+                                 style="max-width: 100px; max-height: 100px; "/>
+                        </td>
+                        <td>
+                            @if (isUserLoggedIn()) {
+                                <div class="float-end text-nowrap">
+                                    <a [routerLink]="['/instruments/edit', instrument.id, getTypeForEdit()]"
+                                       class="btn btn-sm btn-secondary">Edit</a>
+                                    <button type="button" (click)="confirmDelete(instrument.id!)"
+                                            class="btn btn-sm btn-secondary">Delete
+                                    </button>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

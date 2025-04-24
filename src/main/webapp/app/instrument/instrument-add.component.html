@@ -1,0 +1,14 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@instrument.add.headline">{{ getFormTitle() }}</h1>
+    <div>
+        <a [routerLink]="getBackToListUrl()" class="btn btn-secondary">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="addForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="addForm" field="type" rowType="select" [options]="{'GUITAR': 'GUITAR', 'BASS_GUITAR': 'BASS_GUITAR', 'DRUM': 'DRUM', 'KEYBOARD': 'KEYBOARD', 'MICROPHONE': 'MICROPHONE'}" i18n-label="@@instrument.type.label" label="Type" />
+    <app-input-row [group]="addForm" field="brand" label="Brand" />
+    <app-input-row [group]="addForm" field="name" label="Name" />
+    <app-input-row [group]="addForm" field="price" label="Price" />
+    <app-input-row [group]="addForm" field="imageUrl" label="Image Url" />
+    <input type="submit" [value]="getFormTitle()" class="btn btn-primary mt-4" />
+</form>

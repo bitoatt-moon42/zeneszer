@@ -1,0 +1,17 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+application-local.yml
+*.log
+.DS_Store
+node/
+node_modules/
+.angular/cache
+
+## IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr

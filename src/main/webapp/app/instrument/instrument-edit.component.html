@@ -1,0 +1,14 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" >{{ getFormTitle() }}</h1>
+    <div>
+        <a [routerLink]="getBackToListUrl()" class="btn btn-secondary">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="editForm" field="type" rowType="select" [options]="{'GUITAR': 'GUITAR', 'BASS_GUITAR': 'BASS_GUITAR', 'DRUM': 'DRUM', 'KEYBOARD': 'KEYBOARD', 'MICROPHONE': 'MICROPHONE'}" i18n-label="@@instrument.type.label" label="Type" />
+    <app-input-row [group]="editForm" field="brand" label="Brand" />
+    <app-input-row [group]="editForm" field="name" label="Name" />
+    <app-input-row [group]="editForm" field="price" label="Price" />
+    <app-input-row [group]="editForm" field="imageUrl" label="Image Url" />
+    <input type="submit" [value]="getFormTitle()" class="btn btn-primary mt-4" />
+</form>

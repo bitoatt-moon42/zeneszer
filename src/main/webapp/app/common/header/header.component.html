@@ -1,0 +1,61 @@
+<header class="bg-light">
+    <div class="container">
+        <nav class="navbar navbar-light navbar-expand-md">
+            <a routerLink="/" class="navbar-brand">
+                <img ngSrc="logo.png" width="30" height="30" class="d-inline-block align-top"/>
+                <span class="ps-1">A&D Instrument store</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggle"
+                    aria-label="Toggle navigation" aria-controls="navbarToggle"
+                    aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ms-auto">
+                    <li class="navbar-item">
+                        <a href="/instruments/guitar" type="button" class="btn btn-light">Guitars</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/instruments/bass_guitar" type="button" class="btn btn-light">Bass guitars</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/instruments/drum" type="button" class="btn btn-light">Drums</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/instruments/keyboard" type="button" class="btn btn-light">Keyboards</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/instruments/microphone" type="button" class="btn btn-light">Microphones</a>
+                    </li>
+                    <li class="navbar-item">
+                    <li class="navbar-item">
+                        <a routerLink="/" class="btn btn-light">Home</a>
+                    </li>
+                    @if (!isUserLoggedIn()) {
+                        <li class="navbar-item dropdown">
+                            <button type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="user"
+                                    aria-expanded="false">User
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user">
+                                <li><a href="/users/login" class="dropdown-item">Login</a></li>
+                            </ul>
+                        </li>
+                    } @else {
+                        <li class="navbar-item dropdown">
+                            <button type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                    id="userLoggedIn"
+                                    aria-expanded="false">{{ getUserName() }}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userLoggedIn">
+                                <li><a href="/users/add" class="dropdown-item">Register new user</a></li>
+                                <li>
+                                    <button type="button" (click)="logout()" class="dropdown-item">Logout</button>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
