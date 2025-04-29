@@ -23,7 +23,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/users", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "*")
 public class UserResource {
 
     private final UserService userService;

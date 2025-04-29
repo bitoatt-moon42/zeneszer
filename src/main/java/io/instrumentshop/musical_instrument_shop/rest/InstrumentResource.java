@@ -23,7 +23,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/instruments", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "*")
 public class InstrumentResource {
 
     private final InstrumentService instrumentService;
